@@ -69,7 +69,7 @@ while playing:
         print("you entered the wrong value") 
 
 #Dealers Turn 
-while hand_value(dealer_hand)<21: 
+while hand_value(dealer_hand)<19: 
     dealer_hand.append(deck[5])
     dealer_values=hand_value(dealer_hand)
     print(f"Dealers Hand {dealer_hand}")
@@ -84,4 +84,4 @@ else:
     print("It is a tie! No one wins!") 
 
 print("Game over!")
-close=input("Press X to close this game") 
+close=input("Press X to close this game: ") 
