@@ -10,3 +10,4 @@ player_hand=[]
 dealer_hand=[]
 player_values=[]
 dealer_values=[] 
+print(deck)
