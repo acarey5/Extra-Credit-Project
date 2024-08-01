@@ -73,7 +73,7 @@ while hand_value(dealer_hand)<21:
     dealer_hand.append(deck[5])
     dealer_values=hand_value(dealer_hand)
     print(f"Dealers Hand {dealer_hand}")
-
+#Winner Calculations
 if player_values>21: 
     print("Dealer Wins!")
 elif dealer_values>21 or player_values>dealer_values: 
@@ -81,4 +81,7 @@ elif dealer_values>21 or player_values>dealer_values:
 elif player_values<dealer_values: 
     print("Dealer wins!")
 else: 
-    print("It is a tie! No one wins!")
+    print("It is a tie! No one wins!") 
+
+print("Game over!")
+close=input("Press X to close this game") 
