@@ -8,6 +8,77 @@ for suit in suits:
 deck=orgdeck[:]
 player_hand=[] 
 dealer_hand=[]
-player_values=[]
-dealer_values=[] 
-print(deck)
+player_values=0
+dealer_values=0
+
+#Shuffle Deck
+r.shuffle(deck) 
+
+#Dealing Card to Player 
+player_hand.append(deck[0]) 
+player_hand.append(deck[1])
+deck.pop(0)
+deck.pop(1)
+#Dealing Card to Dealer 
+dealer_hand.append(deck[2])
+dealer_hand.append(deck[3])
+deck.pop(2)
+deck.pop(3)
+
+
+#Calculating Hand Values 
+def hand_value(hand): 
+    value=0 
+    ace=0 
+    for card in hand: 
+        card=card.split()
+        card_value=card[0]
+        value+=values[card_value] 
+        if card_value=="Ace": 
+            ace+=1 
+    while value>21 and ace: 
+        value-=1
+        ace-=1 
+    return value 
+
+#player_values=hand_value(player_hand)
+#dealer_values=hand_value(dealer_hand) 
+
+player_name=input("Hello!, Please enter your name:")
+
+print(f"Hello {player_name},this is your hand {player_hand}")
+print(f"Dealers hand:{dealer_hand}")
+
+#Player's turn 
+
+playing=True 
+while playing: 
+    player_values=hand_value(player_hand)
+    if player_values>21: 
+        print("Sorry you lose!")
+        break
+    hitorstand=input("Enter hit if you would like to hit or stand if you would like to stand: ").lower()
+    if hitorstand=="hit": 
+        player_hand.append(deck[4])
+        deck.pop(4) 
+        player_values=hand_value(player_hand)
+        print(f"Your new hand is {player_hand}")
+    elif hitorstand=="stand": 
+        break 
+    else: 
+        print("you entered the wrong value") 
+
+#Dealers Turn 
+while hand_value(dealer_hand)<21: 
+    dealer_hand.append(deck[5])
+    dealer_values=hand_value(dealer_hand)
+    print(f"Dealers Hand {dealer_hand}")
+
+if player_values>21: 
+    print("Dealer Wins!")
+elif dealer_values>21 or player_values>dealer_values: 
+    print(f"Congratulations {player_name}! You win!") 
+elif player_values<dealer_values: 
+    print("Dealer wins!")
+else: 
+    print("It is a tie! No one wins!")
