@@ -41,10 +41,11 @@ def hand_value(hand):
         ace-=1 
     return value 
 
-#player_values=hand_value(player_hand)
-#dealer_values=hand_value(dealer_hand) 
+#Game start 
 
 player_name=input("Hello!, Please enter your name:")
+player_bet=int(input("Enter the amount you would like to bet:"))
+
 
 print(f"Hello {player_name},this is your hand {player_hand}")
 print(f"Dealers hand:{dealer_hand}")
@@ -69,17 +70,18 @@ while playing:
         print("you entered the wrong value") 
 
 #Dealers Turn 
-while hand_value(dealer_hand)<19: 
+while hand_value(dealer_hand)<=16: 
     dealer_hand.append(deck[5])
     dealer_values=hand_value(dealer_hand)
     print(f"Dealers Hand {dealer_hand}")
 #Winner Calculations
 if player_values>21: 
-    print("Dealer Wins!")
+    print(f"Dealer Wins! You lost ${player_bet}!")
 elif dealer_values>21 or player_values>dealer_values: 
-    print(f"Congratulations {player_name}! You win!") 
+    player_bet*=2
+    print(f"Congratulations {player_name}! You win! Cashout ${player_bet}")
 elif player_values<dealer_values: 
-    print("Dealer wins!")
+    print(f"Dealer Wins! You lost ${player_bet}!")
 else: 
     print("It is a tie! No one wins!") 
 
