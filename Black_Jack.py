@@ -56,7 +56,6 @@ playing=True
 while playing: 
     player_values=hand_value(player_hand)
     if player_values>21: 
-        print("Sorry you lose!")
         break
     hitorstand=input("Enter hit if you would like to hit or stand if you would like to stand: ").lower()
     if hitorstand=="hit": 
@@ -69,16 +68,19 @@ while playing:
     else: 
         print("you entered the wrong value") 
 
-#Dealers Turn 
+#Dealers Turn
+print()
 while hand_value(dealer_hand)<=16: 
     dealer_hand.append(deck[5])
     dealer_values=hand_value(dealer_hand)
     print(f"Dealers Hand {dealer_hand}")
+    print()
 #Winner Calculations
 if player_values>21: 
     print(f"Dealer Wins! You lost ${player_bet}!")
 elif dealer_values>21 or player_values>dealer_values: 
     player_bet*=2
+    print("Dealer Busts!")
     print(f"Congratulations {player_name}! You win! Cashout ${player_bet}")
 elif player_values<dealer_values: 
     print(f"Dealer Wins! You lost ${player_bet}!")
