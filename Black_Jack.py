@@ -48,7 +48,7 @@ player_bet=int(input("Enter the amount you would like to bet:"))
 
 
 print(f"Hello {player_name},this is your hand {player_hand}")
-print(f"Dealers hand:{dealer_hand}")
+print(f"Dealers hand:{dealer_hand[0]}")
 
 #Player's turn 
 
